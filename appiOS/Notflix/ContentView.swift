@@ -9,7 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ComposeView()
+        ScrollView(.vertical, showsIndicators: false) {
+            LazyVStack { // <-- replacing this with `VStack` resolves the issue
+                ForEach(0..<6) { index in
+                    Text(index.description)
+                    ComposeView()
+                        .frame(height: 200)
+                }
+            }
+        }
     }
 }
 
